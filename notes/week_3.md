@@ -65,3 +65,65 @@ Transparency: you don't see the code, only the results. Writing the code yoursel
 
 clone a given repository.
 
+
+### Python analysis intro
+
+```
+# importing regex library that allows you to search for specific chunks in a string/separate a string based on a character
+import re
+# importing the collections library, but only the counter function
+from collections import Counter
+
+# a string
+# defining a variable that stores name of file to open in a string
+filepath_of_text = "Bette-Smith-Transcript.txt"
+
+# an integer
+# number of words to look at when tallied; i.e., top 50
+number_of_desired_words = 50
+
+# a list
+# an array listing words to ignore
+stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're", "you've", "you'll", 
+             "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', "she's", 
+             'her', 'hers', 'herself', 'it', "it's", 'its', 'itself', 'they', 'them', 'their', 'theirs', 
+             'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', "that'll", 'these', 'those', 'am', 'is', 
+             'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'said', 
+             'say', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at',
+             'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 
+             'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 
+             'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'would', 'could', 'should', 
+             'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 
+             'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', "don't", 'should', 
+             "should've", 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 
+             'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't", 'haven', "haven't", 'isn', 
+             "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn', 
+             "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]
+
+# body paragraphs
+
+# file io
+# defining and storing value of the entire text in a variable; opens the file stored in the variable above, make it all lowercase
+full_text = open(filepath_of_text, encoding="utf-8").read().lower()
+
+# words of text split using regex --> text transforms from string to list
+# analyzes the text to turns/splits it into an array of individual words
+text_split_into_words = re.split(r"\W+", full_text)
+
+# empty list
+# loop to remove stopwords and populate significant_words with... the significant words
+# defines an empty array that the for loop then populates with words from the text-turned-list, given that it doesn't appear in the stopwords array and is alphabetical (not a number)
+significant_words = []
+
+for word in text_split_into_words:
+    if word not in stopwords and word.isalpha():
+        significant_words.append(word)
+
+# a dictionary
+# counting the words that occur in the significant_words array and defining the most common
+significant_words_tally = Counter(significant_words)
+order_significant_words = significant_words_tally.most_common(number_of_desired_words)
+
+order_significant_words
+```
+
