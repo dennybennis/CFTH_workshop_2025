@@ -49,7 +49,8 @@ Python is 0-indexed (starts at 0 instead of 1)
 Slicing is when we identify a range of characters with a colon:
 
 ```paragraph = "no knight is more"```
-``` paragraph[0:9]```
+
+```paragraph[0:9]```
 
 #### Grouping
 
