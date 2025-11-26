@@ -101,3 +101,35 @@ returns False
 ```True or False```
 
 returns True
+
+## Flow charts
+
+Useful for thinking like a computer.
+
+Plan out a project in advance.
+
+## Basic structure of a Python solution
+
+* check out Programming Historian
+
+### Conditional statements
+
+#### if/else statements
+
+if _ do this
+
+elif _ do this
+
+else do this
+
+```
+if condition 1:
+    result 1
+elif condition 2:
+    result 2
+else:
+    result 3
+```
+
+## Homework
+Check out [Python documentation](www.python.org/doc/) and find one small thing to mention next class.
