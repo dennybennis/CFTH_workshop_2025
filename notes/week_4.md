@@ -1,4 +1,5 @@
-# week 3
+# week 4
+
 ## Variables
 
 variables are assigned with ```=```
